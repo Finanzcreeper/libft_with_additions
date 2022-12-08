@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:21:52 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/08 19:23:02 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/08 19:48:44 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ char	**ft_split(char const *a1, char delimiter)
 	delim[0] = delimiter;
 	delim[1] = '\0';
 	mod = ft_strtrim((char *)a1, delim);
+	if (a1 == NULL)
+		return (NULL);
 	if (a1[0] == '\0')
 	{
 		out = malloc(1 * sizeof(char *));
