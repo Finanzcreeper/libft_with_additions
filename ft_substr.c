@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:42:12 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/05 19:24:52 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/08 18:22:41 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	c = 0;
 	i = 0;
-	sub = malloc((len + 1) * sizeof(char));
+	sub = ft_calloc((len + 1), sizeof(char));
 	if (sub == NULL)
 		return (NULL);
 	if ((int)start > 1 + ft_strlen((char *)s))
@@ -30,7 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	while (c < len)
 	{
-		if (s[c] == '\0')
+		if (s[start] == '\0')
 			return (sub);
 		sub[c] = s[start];
 		c++;

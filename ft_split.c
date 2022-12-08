@@ -6,65 +6,79 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:21:52 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/08 12:55:13 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/08 19:23:02 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	**ft_split(char const *a1, char delim)
+static char	**ft_splitter(char *mod, char **out, char *delim)
 {
-	int		c;
-	int		i;
-	int		l;
-	char	**out
+	unsigned int		c;
+	unsigned int		p;
+	int					i;
+	int					l;
 
 	c = 0;
 	i = 0;
-	l = 0;
-	ft_strtrim(a1,c);
-	while(a1[c])
+	while (mod[c])
 	{
-		while(a1[c] == delim && a1[c])
+		p = 0;
+		mod = ft_strtrim(mod, delim);
+		l = ft_strlen(mod);
+		while (mod[c] != delim[0] && mod[c])
 			c++;
-		l++;
-		while(a1[c] != delim && a1[c])
-			c++;
+		out[i] = ft_calloc(c + 1, sizeof(char));
+		while (p < c)
+		{
+			out[i][p] = mod[p];
+			p++;
+		}
+		i++;
+		mod = ft_substr(mod, c, l);
+		c = 0;
 	}
-	out = malloc(l)
-	c = 0;
-	while(a1[c] != c)
-	{
-		c++;
-	}
-
-
+	return (out);
 }
 
-int	main()
+static int	ft_lencnt(char *mod, char delimiter)
 {
-	char	*s;
-	char	c;
-	char	**out;
-	int		i;
-	int		d;
+	unsigned int		c;
+	int					l;
 
-	s = "    lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
-	c = ' ';
-	i = 0;
-	d = 0;
-	out = ft_split(s,c);
-	while(i < 13)
+	c = 0;
+	l = 0;
+	while (mod[c])
 	{
-		printf("%c",out[i][d]);
-		d++;
-		if (out[i][d] == '\0')
-		{
-			i++;
-			d = 0;
-			printf("\n\n");
-		}
+		while (mod[c] == delimiter && mod[c])
+			c++;
+		l++;
+		while (mod[c] != delimiter && mod[c])
+			c++;
 	}
-	return(0);
+	return (l);
+}
+
+char	**ft_split(char const *a1, char delimiter)
+{
+	int					l;
+	char				*mod;
+	char				**out;
+	char				delim[2];
+
+	delim[0] = delimiter;
+	delim[1] = '\0';
+	mod = ft_strtrim((char *)a1, delim);
+	if (a1[0] == '\0')
+	{
+		out = malloc(1 * sizeof(char *));
+		out[0] = NULL;
+		return (out);
+	}
+	l = ft_lencnt(mod, delimiter);
+	out = malloc(l * sizeof(char *));
+	if (out == NULL)
+		return (NULL);
+	out = ft_splitter(mod, out, delim);
+	return (out);
 }

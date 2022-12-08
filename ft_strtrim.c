@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:17:24 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/06 13:20:55 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/08 15:36:03 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static int	backremover(char *s1, char *set)
 	int		removeback;
 
 	removeback = 0;
-	c = 0;
 	i = 0;
 	c = ft_strlen(s1) - 1;
 	i = 0;
