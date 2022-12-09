@@ -81,7 +81,7 @@ int		main(int argc, const char *argv[])
 	}
 	else if (arg == 9)
 	{
-		char *res = ft_itoa(-2147483648LL);
+		char *res = ft_itoa(-2147483648);
 		ft_print_result(res);
 		free(res);
 	}

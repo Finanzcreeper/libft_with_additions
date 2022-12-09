@@ -1,9 +1,9 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-c4b5c4.42berlin.de
+c4b9c4.42berlin.de
 Linux 5.4.0-135-generic x86_64
 $> date
-Thu 08 Dec 2022 09:33:51 PM CET
+Fri 09 Dec 2022 10:46:15 AM CET
 $> gcc --version
 gcc (Ubuntu 10.3.0-1ubuntu1~20.04) 10.3.0
 Copyright (C) 2020 Free Software Foundation, Inc.
@@ -108,7 +108,7 @@ $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-r--r-- 1 nreher 2022_berlin 34692 Dec  8 21:33 /nfs/homes/nreher/Dev/Libft/libft-war-machine-master/dirlibft/libft.a
+-rw-r--r-- 1 nreher 2022_berlin 35196 Dec  9 10:46 /nfs/homes/nreher/Dev/Libft/libft-war-machine-master/dirlibft/libft.a
 
 = Part2_functions ==============================================================
 
@@ -290,15 +290,8 @@ Diff OK :D
 = Test 9 ===================================================
 $> ./user_exe 09
 $> diff -U 3 user_output_test09 test09.output
---- /nfs/homes/nreher/Dev/Libft/libft-war-machine-master/tests/Part2_functions/ft_itoa/user_output_test09	2022-12-08 21:33:55.100917057 +0100$
-+++ /nfs/homes/nreher/Dev/Libft/libft-war-machine-master/tests/Part2_functions/ft_itoa/test09.output	2022-12-03 16:07:17.000000000 +0100$
-@@ -1 +1 @@$
---$
-\ No newline at end of file$
-+-2147483648$
-\ No newline at end of file$
 
-Diff KO :(
+Diff OK :D
 = Test 10 ==================================================
 $> ./user_exe 10
 $> diff -U 3 user_output_test10 test10.output

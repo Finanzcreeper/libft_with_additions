@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 19:51:29 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/08 21:29:13 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/09 10:46:11 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,26 @@ static char	*ft_numtochr(int n, int c, int rev)
 	return (out);
 }
 
+static char	*ft_intalloc(int n)
+{
+	char	*out;
+
+	if (n == -2147483648)
+	{
+		out = ft_calloc(12, sizeof(char));
+		if (out == NULL)
+			return (NULL);
+		return (out = "-2147483648");
+	}
+	else
+	{
+		out = ft_calloc(2, sizeof(char));
+		if (out == NULL)
+			return (NULL);
+		return (out = "0");
+	}
+}
+
 char	*ft_itoa(int n)
 {
 	int		c;
@@ -45,19 +65,16 @@ char	*ft_itoa(int n)
 
 	rev = 0;
 	c = 0;
+	if (n == 0 || n == -2147483648)
+	{
+		out = ft_intalloc(n);
+		return (out);
+	}
 	if (n < 0)
 	{
 		n = n * -1;
 		c++;
 		rev++;
-	}
-	if (n == 0)
-	{
-		out = ft_calloc(2, sizeof(char));
-		if (out == NULL)
-			return (NULL);
-		out[0] = '0';
-		return (out);
 	}
 	out = ft_numtochr(n, c, rev);
 	return (out);
