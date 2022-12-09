@@ -6,11 +6,12 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:21:52 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/08 19:48:44 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:19:03 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static char	**ft_splitter(char *mod, char **out, char *delim)
 {

@@ -6,14 +6,16 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 12:40:27 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/04 13:34:42 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/09 15:36:58 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr( const char *s, int c)
+char	*ft_strchr( const char *s, int co)
 {
-	int	i;
+	int		i;
+	char	c;
 
+	c = (char)co;
 	i = 0;
 	while (s[i])
 	{

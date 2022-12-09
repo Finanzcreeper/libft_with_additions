@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:17:24 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/08 15:36:03 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:03:07 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,21 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		c;
 	int		i;
-	int		rfront;
-	int		rback;
+	int		rfrnt;
+	int		rbck;
 	char	*out;
 
 	c = ft_strlen((char *)s1) - 1;
-	rback = backremover((char *)s1, (char *)set);
-	rfront = frontremover((char *)s1, (char *)set);
+	rbck = backremover((char *)s1, (char *)set);
+	rfrnt = frontremover((char *)s1, (char *)set);
 	i = 0;
-	out = ft_calloc((ft_strlen((char *)s1) - rback - rfront + 1), sizeof(char));
-	while (rfront <= c - rback)
+	out = ft_calloc((ft_strlen((char *)s1) - (rbck - rfrnt) + 1), sizeof(char));
+	if (out == NULL)
+		return (NULL);
+	while (rfrnt <= c - rbck)
 	{
-		out[i] = (char)s1[rfront];
-		rfront++;
+		out[i] = (char)s1[rfrnt];
+		rfrnt++;
 		i++;
 	}
 	out[i] = '\0';

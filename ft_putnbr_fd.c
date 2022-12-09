@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 17:57:26 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 13:37:38 by nreher           ###   ########.fr       */
+/*   Created: 2022/12/09 11:49:08 by nreher            #+#    #+#             */
+/*   Updated: 2022/12/09 12:18:19 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*a1;
-	char	*a2;
-	char	*new;
 	int		c;
-	int		i;
+	char	o;
 
-	a1 = (char *)s1;
-	a2 = (char *)s2;
 	c = 0;
-	i = 0;
-	new = ft_calloc((ft_strlen(a1) + ft_strlen(a2) + 1), sizeof(char));
-	if (new == NULL)
-		return (NULL);
-	while (s1[c])
+	if (n == -2147483648)
 	{
-		new[c] = s1[c];
-		c++;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	while (s2[i])
+	if (n < 0)
 	{
-		new[c] = s2[i];
-		c++;
-		i++;
+		n = n * -1;
+		write(fd, "-", 1);
 	}
-	return (new);
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	o = (n % 10) + '0';
+	write(fd, &o, 1);
 }

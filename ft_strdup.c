@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:21:14 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/05 12:11:39 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/09 13:35:22 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_strdup(const char *s)
 		size++;
 	size++;
 	new = malloc(size * sizeof(char));
+	if (new == NULL)
+		return (NULL);
 	ft_strlcpy(new, s, size);
 	return (new);
 }

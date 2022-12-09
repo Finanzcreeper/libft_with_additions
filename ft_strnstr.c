@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:42:35 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/04 19:45:54 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/09 16:26:43 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		if (big[i] == '\0')
 			return (0);
 		if (big[i] != little[c])
+		{
+			i = i - c;
 			c = 0;
+		}
 		else
 			c++;
 		i++;
