@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:56:50 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 11:49:01 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/09 20:10:15 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include	<stddef.h>
 # include	<stdlib.h>
 # include	<unistd.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}t_list;
 
 int		ft_atoi(const char *nptr);
 void	*ft_bzero(void *s, size_t n);

@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:42:12 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 16:49:31 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/09 20:47:22 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	c = 0;
 	i = 0;
+	if (s == NULL)
+		return (NULL);
 	sub = ft_calloc((len + 1), sizeof(char));
 	if (sub == NULL)
 		return (NULL);

@@ -16,6 +16,9 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	ar -cvq $(NAME) $^
 
+bonus : $(BONOBJ) $(OBJ)
+	ar -cvq $(NAME) $^
+
 fclean :
 	-rm $(OBJ) $(NAME)
 
