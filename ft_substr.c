@@ -6,19 +6,34 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:42:12 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 20:47:22 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/12 11:28:28 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static char	*strmke(char const *s, size_t len, char *sub, unsigned int start)
+{
+	size_t	c;
+
+	c = 0;
+	while (c < len)
+	{
+		if (s[start] == '\0')
+			return (sub);
+		sub[c] = s[start];
+		c++;
+		start++;
+	}
+	sub[c] = '\0';
+	return (sub);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*sub;
-	size_t			c;
 	unsigned int	i;
 
-	c = 0;
 	i = 0;
 	if (s == NULL)
 		return (NULL);
@@ -30,14 +45,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		sub[0] = '\0';
 		return (sub);
 	}
-	while (c < len)
-	{
-		if (s[start] == '\0')
-			return (sub);
-		sub[c] = s[start];
-		c++;
-		start++;
-	}
-	sub[c] = '\0';
+	strmke (s, len, sub, start);
 	return (sub);
 }
