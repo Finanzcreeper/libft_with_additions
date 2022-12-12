@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 11:49:08 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/12 14:55:07 by nreher           ###   ########.fr       */
+/*   Created: 2022/12/12 12:11:36 by nreher            #+#    #+#             */
+/*   Updated: 2022/12/12 15:53:41 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	char	o;
+	if (lst && new)
+	{
+		new -> next = *lst;
+		*lst = new;
+	}
+}
 
-	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		n = n * -1;
-		write(fd, "-", 1);
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	o = (n % 10) + '0';
-	write(fd, &o, 1);
+#include <stdio.h>
+int main(void)
+{
+	t_list	*a;
+	t_list	*b;
+	t_list	*c;
+	t_list	*d;
+
+/*	*/printf("test\n");
+	d -> next = NULL;
+	c -> next = d;
+	b -> next = c;
+	a -> next = b;
+	a -> content = (int *)123;
+	b -> content = "this is b";
+	c -> content = "Q";
+	d -> content = (int *)-5;
+/*	*/printf("%d\n",a->content);
+return(0);
 }

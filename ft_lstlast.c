@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 11:49:08 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/12 14:55:07 by nreher           ###   ########.fr       */
+/*   Created: 2022/12/12 13:22:25 by nreher            #+#    #+#             */
+/*   Updated: 2022/12/12 15:08:50 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list	*ft_lstlast(t_list *lst)
 {
-	char	o;
-
-	if (n == -2147483648)
+	if (lst == NULL)
+		return (NULL);
+	while (lst -> next)
 	{
-		write(fd, "-2147483648", 11);
-		return ;
+		lst = lst -> next;
 	}
-	if (n < 0)
-	{
-		n = n * -1;
-		write(fd, "-", 1);
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	o = (n % 10) + '0';
-	write(fd, &o, 1);
+	return (lst);
 }

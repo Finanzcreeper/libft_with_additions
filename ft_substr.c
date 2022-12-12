@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:42:12 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/12 11:28:28 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/12 14:54:14 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ static char	*strmke(char const *s, size_t len, char *sub, unsigned int start)
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*sub;
-	unsigned int	i;
 
-	i = 0;
 	if (s == NULL)
 		return (NULL);
 	sub = ft_calloc((len + 1), sizeof(char));

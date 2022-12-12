@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:17:24 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 20:40:26 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/12 14:54:51 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static int	backremover(char *s1, char *set)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		c;
-	int		i;
 	int		rfrnt;
 	int		rbck;
 	char	*out;
@@ -72,7 +71,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	c = ft_strlen((char *)s1) - 1;
 	rbck = backremover((char *)s1, (char *)set);
 	rfrnt = frontremover((char *)s1, (char *)set);
-	i = 0;
 	if (rbck == rfrnt && rbck == c + 1)
 		out = ft_substr(s1, rfrnt, 1);
 	else

@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 19:51:29 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 15:19:08 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/12 12:12:38 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*ft_intalloc(int n)
 {
 	char	*out;
 
-	if (n == -2147483648LL)
+	if (n == -2147483648)
 	{
 		out = ft_calloc(12, sizeof(char));
 		if (out == NULL)
