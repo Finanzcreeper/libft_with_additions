@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 19:51:29 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/12 12:12:38 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/13 19:53:28 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*ft_intalloc(int n)
 		out = ft_calloc(12, sizeof(char));
 		if (out == NULL)
 			return (NULL);
-		out = "-2147483648";
+		ft_strlcpy(out, "-2147483648", 12);
 		return (out);
 	}
 	else
@@ -54,7 +54,8 @@ static char	*ft_intalloc(int n)
 		out = ft_calloc(2, sizeof(char));
 		if (out == NULL)
 			return (NULL);
-		return (out = "0");
+		out[0] = '0';
+		return (out);
 	}
 }
 
@@ -80,3 +81,13 @@ char	*ft_itoa(int n)
 	out = ft_numtochr(n, c, rev);
 	return (out);
 }
+
+/*#include <stdio.h>
+int	main(void)
+{
+	char	*out;
+	out = ft_itoa(0);
+	printf("{%s}\n",out);
+	return(0);
+}
+*/

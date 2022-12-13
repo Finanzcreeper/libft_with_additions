@@ -6,11 +6,11 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 12:06:30 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/05 15:51:41 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/13 15:55:31 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int	len;
 

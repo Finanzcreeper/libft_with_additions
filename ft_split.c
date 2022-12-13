@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:21:52 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 21:02:25 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/13 21:57:44 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static char	**ft_splitter(char *mod, char **out, char *delim)
 {
 	unsigned int		c;
-	unsigned int		p;
 	int					i;
 	int					l;
 
@@ -24,18 +23,15 @@ static char	**ft_splitter(char *mod, char **out, char *delim)
 	i = 0;
 	while (mod[c])
 	{
-		p = 0;
 		mod = ft_strtrim(mod, delim);
 		l = ft_strlen(mod);
 		while (mod[c] != delim[0] && mod[c])
 			c++;
 		out[i] = ft_calloc(c + 1, sizeof(char));
-		while (p < c)
-		{
-			out[i][p] = mod[p];
-			p++;
-		}
+		out[i] = ft_substr(mod, 0, c);
 		i++;
+		//free(mod);
+		//mod = ft_calloc(l, sizeof(char));
 		mod = ft_substr(mod, c, l);
 		c = 0;
 	}
@@ -84,9 +80,10 @@ char	**ft_split(char const *a1, char delimiter)
 	if (out == NULL)
 		return (NULL);
 	out = ft_splitter(mod, out, delim);
+	free(mod);
 	return (out);
 }
-/*#include <stdio.h>
+#include <stdio.h>
 int main(void)
 {
 	char	**out;
@@ -101,5 +98,11 @@ int main(void)
 		printf("{%s}\n",out[c]);
 		c++;
 	}
+	c = 0;
+	while(out[c])
+	{
+		free(out[c]);
+		c++;
+	}
 	return(0);
-}*/
+}

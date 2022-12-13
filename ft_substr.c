@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:42:12 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/12 14:54:14 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/13 19:33:48 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,20 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (s == NULL)
 		return (NULL);
-	sub = ft_calloc((len + 1), sizeof(char));
-	if (sub == NULL)
-		return (NULL);
-	if ((int)start > 1 + ft_strlen((char *)s))
+	if (len > (size_t)ft_strlen((char *)s))
+		len = ft_strlen((char *)s);
+	if (start > (unsigned int)ft_strlen((char *)s))
 	{
-		sub[0] = '\0';
+		sub = ft_calloc(1, sizeof(char));
 		return (sub);
 	}
+	if (start + len <= (unsigned int)ft_strlen((char *)s) + 1)
+		sub = ft_calloc(((int)len + 1), sizeof(char));
+	if ((int)start + (int)len > ft_strlen((char *)s) + 1)
+		sub = ft_calloc((((int)start + (int)len)
+					- ft_strlen((char *)s)) + 1, sizeof(char));
+	if (sub == NULL)
+		return (NULL);
 	strmke (s, len, sub, start);
 	return (sub);
 }
