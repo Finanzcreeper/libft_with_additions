@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:21:52 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/13 21:57:44 by nreher           ###   ########.fr       */
+/*   Updated: 2022/12/22 12:43:44 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	**ft_split(char const *a1, char delimiter)
 	free(mod);
 	return (out);
 }
-#include <stdio.h>
+
 int main(void)
 {
 	char	**out;
