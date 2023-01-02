@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:37:09 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 11:40:19 by nreher           ###   ########.fr       */
+/*   Updated: 2023/01/02 22:04:07 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int	c;
 
+	if (fd < 0)
+		return ;
 	c = 0;
 	while (s[c])
 	{

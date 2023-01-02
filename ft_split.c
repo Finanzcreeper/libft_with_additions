@@ -6,35 +6,37 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:21:52 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/22 12:43:44 by nreher           ###   ########.fr       */
+/*   Updated: 2023/01/02 20:24:42 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	**ft_splitter(char *mod, char **out, char *delim)
 {
 	unsigned int		c;
 	int					i;
 	int					l;
+	char				*tmp;
 
 	c = 0;
 	i = 0;
 	while (mod[c])
 	{
+		tmp = mod;
 		mod = ft_strtrim(mod, delim);
+		free(tmp);
 		l = ft_strlen(mod);
 		while (mod[c] != delim[0] && mod[c])
 			c++;
-		out[i] = ft_calloc(c + 1, sizeof(char));
 		out[i] = ft_substr(mod, 0, c);
 		i++;
-		//free(mod);
-		//mod = ft_calloc(l, sizeof(char));
-		mod = ft_substr(mod, c, l);
+		tmp = ft_substr(mod, c, l);
+		free(mod);
+		mod = tmp;
 		c = 0;
 	}
+	free(mod);
 	return (out);
 }
 
@@ -68,7 +70,7 @@ char	**ft_split(char const *a1, char delimiter)
 	delim[0] = delimiter;
 	delim[1] = '\0';
 	mod = ft_strtrim((char *)a1, delim);
-	if (a1[0] == '\0')
+	if (a1[0] == '\0' || !mod)
 	{
 		free(mod);
 		out = malloc(1 * sizeof(char *));
@@ -79,30 +81,34 @@ char	**ft_split(char const *a1, char delimiter)
 	out = ft_calloc((l + 1), sizeof(char *));
 	if (out == NULL)
 		return (NULL);
-	out = ft_splitter(mod, out, delim);
-	free(mod);
+	ft_splitter(mod, out, delim);
 	return (out);
 }
 
-int main(void)
-{
-	char	**out;
-	int		c;
+// int main(void)
+// {
+// 	char	**out;
+// 	int		c;
 
-	c = 0;
-	out = ft_split("      split       this for   me  !       ",' ');
-	if(out[0] == NULL)
-		printf("nullpointer %p\n",out[0]);
-	while(out[c])
-	{
-		printf("{%s}\n",out[c]);
-		c++;
-	}
-	c = 0;
-	while(out[c])
-	{
-		free(out[c]);
-		c++;
-	}
-	return(0);
-}
+// 	c = 0;
+// 	out = ft_split("split this",' ');
+// 	if(out[0] == NULL)
+// 		printf("nullpointer %p\n",out[0]);
+
+// 	printf("%p:{%p}\n",&out[0], out[0]);
+// 	while(out[c])
+// 	{
+// 		printf("%p:{%s}\n",&out[c], out[c]);
+// 		c++;
+// 	}
+// 	c = 0;
+// 	printf("out:%p\n", out);
+// 	while(out[c])
+// 	{
+// 		free(out[c]);
+// 		c++;
+// 	}
+// 	free(out[c]);
+// 	free(out);
+// 	return(0);
+// }

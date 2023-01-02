@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:41:34 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/09 11:47:54 by nreher           ###   ########.fr       */
+/*   Updated: 2023/01/02 21:57:59 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putendl_fd(char *s, int fd)
 	int	c;
 
 	c = 0;
+	if (fd < 0)
+		return ;
 	while (s[c])
 	{
 		write(fd, &s[c], 1);
