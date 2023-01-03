@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:21:52 by nreher            #+#    #+#             */
-/*   Updated: 2023/01/02 20:24:42 by nreher           ###   ########.fr       */
+/*   Updated: 2023/01/03 17:23:30 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static char	**ft_splitter(char *mod, char **out, char *delim)
 			c++;
 		out[i] = ft_substr(mod, 0, c);
 		i++;
-		tmp = ft_substr(mod, c, l);
-		free(mod);
-		mod = tmp;
+		tmp = mod;
+		mod = ft_substr(mod, c, l);
+		free(tmp);
 		c = 0;
 	}
 	free(mod);
@@ -74,6 +74,8 @@ char	**ft_split(char const *a1, char delimiter)
 	{
 		free(mod);
 		out = malloc(1 * sizeof(char *));
+		if (!out)
+			return (NULL);
 		out[0] = NULL;
 		return (out);
 	}
@@ -84,14 +86,14 @@ char	**ft_split(char const *a1, char delimiter)
 	ft_splitter(mod, out, delim);
 	return (out);
 }
-
+//#include <stdio.h>
 // int main(void)
 // {
 // 	char	**out;
 // 	int		c;
 
 // 	c = 0;
-// 	out = ft_split("split this",' ');
+// 	out = ft_split("13  c",' ');
 // 	if(out[0] == NULL)
 // 		printf("nullpointer %p\n",out[0]);
 

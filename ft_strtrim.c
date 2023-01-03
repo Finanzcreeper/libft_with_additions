@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:17:24 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/12 14:54:51 by nreher           ###   ########.fr       */
+/*   Updated: 2023/01/03 16:40:45 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (s1 == NULL || set == NULL)
 		return (NULL);
-	c = ft_strlen((char *)s1) - 1;
+	c = ft_strlen((char *)s1);
 	rbck = backremover((char *)s1, (char *)set);
 	rfrnt = frontremover((char *)s1, (char *)set);
-	if (rbck == rfrnt && rbck == c + 1)
+	if (rbck == rfrnt && rbck == c)
 		out = ft_substr(s1, rfrnt, 1);
 	else
 		out = ft_substr(s1, rfrnt, ft_strlen((char *)s1) - rbck - rfrnt);

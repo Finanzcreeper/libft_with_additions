@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:42:12 by nreher            #+#    #+#             */
-/*   Updated: 2022/12/13 19:33:48 by nreher           ###   ########.fr       */
+/*   Updated: 2023/01/03 17:22:02 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start + len <= (unsigned int)ft_strlen((char *)s) + 1)
 		sub = ft_calloc(((int)len + 1), sizeof(char));
 	if ((int)start + (int)len > ft_strlen((char *)s) + 1)
-		sub = ft_calloc((((int)start + (int)len)
-					- ft_strlen((char *)s)) + 1, sizeof(char));
+		sub = ft_calloc((ft_strlen((char *)s) - start) + 1, sizeof(char));
 	if (sub == NULL)
 		return (NULL);
 	strmke (s, len, sub, start);
 	return (sub);
 }
+// #include <stdio.h>
+// int main(void)
+// {
+// 	char	*out;
+
+// 	out = ft_substr("ab  c", 0, ft_strlen("ab  c"));
+// 	printf("{%s}\n",out);
+// 	return(1);
+// }
