@@ -6,7 +6,7 @@
 /*   By: nreher <nreher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:17:24 by nreher            #+#    #+#             */
-/*   Updated: 2023/01/03 16:40:45 by nreher           ###   ########.fr       */
+/*   Updated: 2023/01/03 17:37:19 by nreher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,24 @@ char	*ft_strtrim(char const *s1, char const *set)
 	c = ft_strlen((char *)s1);
 	rbck = backremover((char *)s1, (char *)set);
 	rfrnt = frontremover((char *)s1, (char *)set);
-	if (rbck == rfrnt && rbck == c)
-		out = ft_substr(s1, rfrnt, 1);
+	if (rbck == c)
+		out = ft_substr(s1, rbck, 1);
 	else
 		out = ft_substr(s1, rfrnt, ft_strlen((char *)s1) - rbck - rfrnt);
 	if (out == NULL)
 		return (NULL);
 	return (out);
 }
-/*
-int main(void)
-{
-	char	*s1 = "  \t \t \n   \n\n\n\t";
-	char	*s2 = "";
-	char	*out;
 
-	out = ft_strtrim(s1," \n\t");
-	if(!out)
-		printf("wrong\n");
-	if(out[0] == '\0')
-		printf("done\n");
-	return(0);
-*/
+// #include <stdio.h>
+// int main(void)
+// {
+// 	char	*s1 = "   xxx   xxx";
+// 	char	*s2 = " x";
+// 	char	*out;
+
+// 	out = ft_strtrim(s1,s2);
+// 	printf("{%s}\n",out);
+// 	free(out);
+// 	return(0);
+// }
