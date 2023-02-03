@@ -23,6 +23,10 @@ typedef struct s_list
 	struct s_list	*next;
 }t_list;
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
 int		ft_atoi(const char *nptr);
 void	*ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
@@ -66,4 +70,12 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+//get next line
+char	*get_next_line(int fd);
+char	*ft_renul(char **rest, char **temps, char *out);
+char	*ft_loopend(char **temps, char **rest, char *out);
+void	ft_fremp(char **temp);
+int		ft_has_nl(const char *s);
+char	*ft_stranl(const char *s);
+char	*ft_strbnl(char *s);
 #endif
