@@ -21,10 +21,10 @@ $(NAME) : $(OBJ)
 	ar -cvq $(NAME) $^
 
 fclean :
-	-rm $(OBJ) $(NAME)
+	-rm -f $(OBJ) $(NAME)
 
 clean :
-	-rm $(OBJ)
+	-rm -f $(OBJ)
 
 re : fclean all
 
